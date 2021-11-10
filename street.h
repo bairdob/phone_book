@@ -29,6 +29,9 @@ private slots:
     void refreshData();
     void cellChanged(const QModelIndex &index);
 
+protected:
+    virtual void closeEvent(QCloseEvent *event);
+
 private:
     Ui::Street *ui;
     QSqlTableModel *model;

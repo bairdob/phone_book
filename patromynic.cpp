@@ -1,7 +1,7 @@
 #include "patromynic.h"
 #include "ui_patromynic.h"
 #include "database.h"
-
+#include "ui_mainwindow.h"
 
 Patromynic::Patromynic(QWidget *parent) :
     QDialog(parent),
@@ -86,4 +86,9 @@ void Patromynic::refreshData(){
     model->setSort(0, Qt::AscendingOrder);
     model->select();
     ui->tableView->setModel(model);
+}
+
+void Patromynic::closeEvent(QCloseEvent *event)
+{
+    emit destroyed(); // отправить сигнал о закрытии (уничтожении) окна
 }

@@ -1,6 +1,6 @@
 #include "street.h"
 #include "ui_street.h"
-
+#include "ui_mainwindow.h"
 
 Street::Street(QWidget *parent) :
     QDialog(parent),
@@ -85,4 +85,9 @@ void Street::refreshData(){
     model->setSort(0, Qt::AscendingOrder);
     model->select();
     ui->tableView->setModel(model);
+}
+
+void Street::closeEvent(QCloseEvent *event)
+{
+    emit destroyed(); // отправить сигнал о закрытии (уничтожении) окна
 }

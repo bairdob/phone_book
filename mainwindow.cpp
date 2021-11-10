@@ -22,6 +22,11 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 }
 
+void MainWindow::refresh(){
+    qDebug() << "refresh";
+    refreshData();
+}
+
 MainWindow::~MainWindow()
 {
     //database.close();
@@ -32,24 +37,28 @@ void MainWindow::on_toolButtonSurname_clicked()
 {
     surname_window = new Surname(this);
     surname_window->show();
+    connect(surname_window, SIGNAL(destroyed()), this, SLOT(refresh()));
 }
 
 void MainWindow::on_toolButtonName_clicked()
 {
     name_window = new Name(this);
     name_window->show();
+    connect(name_window, SIGNAL(destroyed()), this, SLOT(refresh()));
 }
 
 void MainWindow::on_toolButtonPatronymic_clicked()
 {
     patronymic_window = new Patromynic(this);
     patronymic_window->show();
+    connect(patronymic_window, SIGNAL(destroyed()), this, SLOT(refresh()));
 }
 
 void MainWindow::on_toolButtonStreet_clicked()
 {
     street_window = new Street(this);
     street_window->show();
+    connect(street_window, SIGNAL(destroyed()), this, SLOT(refresh()));
 }
 
 void MainWindow::on_actionSurname_triggered()

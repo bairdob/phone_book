@@ -7,6 +7,7 @@
 #include <QSqlTableModel>
 #include <QMessageBox>
 #include <QAbstractItemModel>
+#include <QCloseEvent>
 
 
 namespace Ui {
@@ -28,6 +29,9 @@ private slots:
     void on_tableView_pressed(const QModelIndex &index);
     void refreshData();
     void cellChanged(const QModelIndex &index);
+
+protected:
+    virtual void closeEvent(QCloseEvent *event);
 
 private:
     Ui::Surname *ui;

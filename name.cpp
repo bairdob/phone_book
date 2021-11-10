@@ -1,7 +1,7 @@
 #include "name.h"
 #include "ui_name.h"
 #include "database.h"
-
+#include "ui_mainwindow.h"
 
 Name::Name(QWidget *parent) :
     QDialog(parent),
@@ -85,4 +85,9 @@ void Name::refreshData(){
     model->setSort(0, Qt::AscendingOrder);
     model->select();
     ui->tableView->setModel(model);
+}
+
+void Name::closeEvent(QCloseEvent *event)
+{
+    emit destroyed(); // отправить сигнал о закрытии (уничтожении) окна
 }

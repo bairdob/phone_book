@@ -2,7 +2,6 @@
 #include "surname.h"
 #include "ui_surname.h"
 
-
 Surname::Surname(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Surname)
@@ -84,3 +83,9 @@ void Surname::refreshData(){
     model->select();
     ui->tableView->setModel(model);
 }
+
+void Surname::closeEvent(QCloseEvent *event)
+{
+    emit destroyed(); // отправить сигнал о закрытии (уничтожении) окна
+}
+

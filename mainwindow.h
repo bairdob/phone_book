@@ -64,7 +64,7 @@ private slots:
     void on_actionName_triggered();
     void on_actionPatronymic_triggered();
     void on_actionStreet_triggered();
-
+    void refresh();
 
 private:
     Ui::MainWindow *ui;
